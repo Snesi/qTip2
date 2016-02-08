@@ -246,7 +246,9 @@ PROTOTYPE.reposition.offset = function(elem, pos, container) {
 
 	// Compensate for containers scroll if it also has an offsetParent (or in IE quirks mode)
 	if(scrolled && (scrolled[0] !== ownerDocument[0] || quirks)) {
-		scroll(scrolled, 1);
+        scroll(scrolled, 1);
+        if(ownerDocument.scrollTop() === 0) { pos.top = 0; }
+        if(ownerDocument.scrollLeft() === 0) { pos.left = 0; }
 	}
 
 	return pos;
