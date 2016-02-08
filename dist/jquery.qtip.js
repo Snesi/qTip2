@@ -2,11 +2,11 @@
  * qTip2 - Pretty powerful tooltips - v3.0.2
  * http://qtip2.com
  *
- * Copyright (c) 2015 
+ * Copyright (c) 2016 
  * Released under the MIT licenses
  * http://jquery.org/license
  *
- * Date: Tue Dec 8 2015 07:16 GMT+0000
+ * Date: Mon Feb 8 2016 01:09 GMT+0100+0100
  * Plugins: tips modal viewport svg imagemap ie6
  * Styles: core basic css3
  */
@@ -949,7 +949,9 @@ PROTOTYPE.reposition.offset = function(elem, pos, container) {
 
 	// Compensate for containers scroll if it also has an offsetParent (or in IE quirks mode)
 	if(scrolled && (scrolled[0] !== ownerDocument[0] || quirks)) {
-		scroll(scrolled, 1);
+        scroll(scrolled, 1);
+        if(ownerDocument.scrollTop() === 0) { pos.top = 0; }
+        if(ownerDocument.scrollLeft() === 0) { pos.left = 0; }
 	}
 
 	return pos;
